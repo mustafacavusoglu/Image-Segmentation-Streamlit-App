@@ -5,4 +5,10 @@
 ## You can try using the images you will download from the google drive link below.
 ### [Google Drive](https://drive.google.com/drive/folders/1g-xZoTLtnn60LzzLrLA5zKvwq-xTHEGl?usp=sharing) 
 
+## Requirements
+* streamlit
+* opencv-python
+* numpy
+* Pillow
+* keras
 
