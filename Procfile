@@ -1,1 +1,1 @@
-web: setup.sh && streamlit run segmentation.py 
+web: sh setup.sh && streamlit run segmentation.py 
