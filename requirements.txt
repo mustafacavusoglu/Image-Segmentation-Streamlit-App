@@ -2,4 +2,4 @@ streamlit
 opencv-python
 numpy
 Pillow
-keras
+tensorflow-cpu
