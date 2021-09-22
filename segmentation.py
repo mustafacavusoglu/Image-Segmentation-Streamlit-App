@@ -1,8 +1,8 @@
 import streamlit as st
 from PIL import Image
-import numpy as np
-from keras.models import load_model
-import cv2
+#import numpy as np
+#from keras.models import load_model
+#import cv2
 
 
 st.title('My first app')
@@ -33,8 +33,8 @@ button = st.button('Predict')
 if button:
     t = st.empty()
     t.markdown('## İmage is segmenting...')
-    model = load_model("satellitesegment.h5")
-    image = image.reshape((1,512,512,3))
-    result_img = predict(model,image)
+    #model = load_model("satellitesegment.h5")
+    #image = image.reshape((1,512,512,3))
+    #result_img = predict(model,image)
     t.markdown('## Segmentation result:')
-    st.image(result_img, caption='Predicted Image.', use_column_width=True)
+    #st.image(result_img, caption='Predicted Image.', use_column_width=True)
