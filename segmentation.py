@@ -33,7 +33,7 @@ button = st.button('Predict')
 if button:
     t = st.empty()
     t.markdown('## İmage is segmenting...')
-    model = load_model("satellite.h5")
+    model = load_model("satellitesegment.h5")
     image = image.reshape((1,512,512,3))
     result_img = predict(model,image)
     t.markdown('## Segmentation result:')
