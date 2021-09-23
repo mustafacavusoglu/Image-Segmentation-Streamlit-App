@@ -1,5 +1,4 @@
 streamlit
 Pillow
 tensorflow-cpu
-opencv-python
-
+opencv-python-headless
