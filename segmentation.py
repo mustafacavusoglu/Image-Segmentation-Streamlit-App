@@ -44,8 +44,8 @@ if button:
     K.set_session(session)
     image = upload_img(image)
     result_img = model.predict(image)
-    result_img = result_img[:,:,:,0]>0.4
-    result_img = result_img[0,:,:]*255
+    result_img = result_img[:,:,:,:]>0.4
+    result_img = result_img[0,:,:,0]*255
     #t.markdown(f"{result_img}")
     #result_img = Image.fromarray(result_img)
     t.markdown('## Segmentation result: ')
