@@ -40,7 +40,7 @@ if uploaded_file is not None:
         t.markdown('## İmage is segmenting...')
         model,session = loading_model()
         K.set_session(session)
-        image = np.array(image)
+        image = np.asarray(image)
         image = Image.fromarray(image)
     #     result_img = model.predict(image)
     #     result_img = result_img[:,:,:,:]>0.5
