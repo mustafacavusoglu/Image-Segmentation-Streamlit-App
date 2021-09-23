@@ -35,21 +35,20 @@ uploaded_file = st.file_uploader("Choose an image...", type=['tif'])
 
 
 if uploaded_file is not None:
-    
-    #t_img = Image.open(uploaded_file)
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_file.read())
-    image = cv2.imread(tfile.name,-1)
-    #t_img = Image.fromarray(image/2**3)
+    t_img = Image.open(tfile.name)
     
-    #st.image(t_img, caption='Uploaded Image.', use_column_width=False)
+    image = cv2.imread(tfile.name,-1)
+    
+    st.image(t_img, caption='Uploaded Image.', use_column_width=False)
 
     button = st.button("Let's Predict Image")
 
     if button:
         t = st.empty()
-        #t.markdown('## İmage is segmenting...')
-        t.markdown(f'{image.shape}')
+        t.markdown('## İmage is segmenting...')
+        #t.markdown(f'{image.shape}')
         model,session = loading_model()
         K.set_session(session)
         image = np.array(image,dtype='uint16').reshape((1,512,512,3))
