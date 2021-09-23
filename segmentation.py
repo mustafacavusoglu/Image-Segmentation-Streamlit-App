@@ -44,7 +44,7 @@ if button:
     model,session = loading_model()
     K.set_session(session)
     #image = upload_img(image)
-    t.markdown(f"{type(image)}")
+    t.markdown(f"{image.size}")
 #     result_img = model.predict(image)
 #     result_img = result_img[:,:,:,0]>0.5
 #     result_img = result_img[0,:,:]
