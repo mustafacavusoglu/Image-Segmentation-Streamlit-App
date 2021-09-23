@@ -17,8 +17,8 @@ def loading_model():
     model = load_model('satellitesegment.h5')
     model._make_predict_function()
     model.summary()
-    #session = K.get_session()
-    return model
+    session = K.get_session()
+    return model,session
 
 
 @st.cache(allow_output_mutation=True)
@@ -42,8 +42,8 @@ if button:
     t = st.empty()
     t.markdown('## İmage is segmenting...')
     #image = image.reshape((1,512,512,3))
-    model = loading_model()
-#     K.set_session(session)
+    model,session = loading_model()
+    K.set_session(session)
 #     result_img = predict(model,image)
     t.markdown('## Segmentation result:')
     st.image(image, caption='Predicted Image.', use_column_width=True)
