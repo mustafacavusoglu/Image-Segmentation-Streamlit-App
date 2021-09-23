@@ -43,6 +43,7 @@ if button:
     t.markdown('## İmage is segmenting...')
     model,session = loading_model()
     K.set_session(session)
+    image = image.resize((512,512),Image.ANTIALIAS)
     #image = upload_img(image)
     t.markdown(f"{image.size}")
 #     result_img = model.predict(image)
