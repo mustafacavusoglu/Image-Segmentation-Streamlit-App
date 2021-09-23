@@ -45,6 +45,7 @@ if button:
     K.set_session(session)
     #image = upload_img(image)
     image = Image.open(image)
+    image = image.load()
 #     result_img = model.predict(image)
 #     result_img = result_img[:,:,:,0]>0.5
 #     result_img = result_img[0,:,:]
