@@ -43,10 +43,10 @@ if uploaded_file is not None:
         model,session = loading_model()
         K.set_session(session)
         image = np.array(image,dtype='uint16').reshape((1,512,512,3))
-        #result_img = model.predict(image)
-        #result_img = result_img[:,:,:,:]>0.5
-        #result_img = result_img[0,:,:,1]*255
-        t.markdown(f"{image.shape}")
-        #result_img = Image.fromarray(result_img)
-        #t.markdown('## Segmentation result: ')
+        result_img = model.predict(image)
+        result_img = result_img[:,:,:,:]>0.5
+        result_img = result_img[0,:,:,1]*255
+        #t.markdown(f"{image.shape}")
+        result_img = Image.fromarray(result_img)
+        t.markdown('## Segmentation result: ')
         st.image(image, caption='Predicted Image.', use_column_width=False)
