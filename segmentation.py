@@ -46,7 +46,7 @@ if button:
     t.markdown(f"{image.shape}")
     result_img = model.predict(image)
     result_img = result_img[:,:,:,0]>0.4
-    result_img = result_img[0,:,:]
+    result_img = result_img[0,:,:]*255
     result_img = Image.fromarray(result_img)
-    t.markdown('## Segmentation result:')
+    t.markdown('## Segmentation result: ')
     st.image(result_img, caption='Predicted Image.', use_column_width=True)
