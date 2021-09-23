@@ -41,7 +41,7 @@ button = st.button('Predict')
 if button:
     t = st.empty()
     t.markdown('## İmage is segmenting...')
-    img_npy = cv2.imread(image)
+    img_npy = Image.fromarray(cv2.imread(image))
 #     image = image.reshape((1,512,512,3))
     
 #     model,session = load_model()
