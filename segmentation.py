@@ -13,7 +13,7 @@ st.title("Segmentation  with Dense-UNet")
 
 
 @st.cache(allow_output_mutation=True)
-def load_model():
+def loading_model():
     model = load_model('satellitesegment.h5')
     model._make_predict_function()
     model.summary()
@@ -42,7 +42,7 @@ if button:
     t = st.empty()
     t.markdown('## İmage is segmenting...')
     #image = image.reshape((1,512,512,3))
-    model = load_model()
+    model = loading_model()
 #     K.set_session(session)
 #     result_img = predict(model,image)
     t.markdown('## Segmentation result:')
