@@ -15,8 +15,8 @@ st.title("Segmentation  with Dense-UNet")
 @st.cache(allow_output_mutation=True)
 def loading_model():
     model = load_model('satellitesegment.h5')
-    model._make_predict_function()
-    model.summary()
+    #model._make_predict_function()
+    #model.summary()
     session = K.get_session()
     return model,session
 
