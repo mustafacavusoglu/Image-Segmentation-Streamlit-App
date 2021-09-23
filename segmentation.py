@@ -32,7 +32,6 @@ def upload_img(image):
 uploaded_file = st.file_uploader("Choose an image...", type="npy")
 
 if uploaded_file is not None:
-    image = Image.fromarray(uploaded_file)
     #st.image(image, caption='Uploaded Image.', use_column_width=False)
     st.markdown(f'{type(uploaded_file)}')
 button = st.button('Predict')
