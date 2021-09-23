@@ -22,12 +22,11 @@ def loading_model():
 
 
 @st.cache
-def upload_img(img):
-    img_npy = cv2.imread(img,-1)
-    img_npy = np.asarray(img_npy)
+def upload_img(image):
+    img_npy = np.array(image)
     img_npy = img_npy.reshape((1,512,512,3))
     
-    return result_img
+    return img_npy
 
 
 uploaded_file = st.file_uploader("Choose an image...", type="tif")
@@ -43,14 +42,11 @@ if button:
     t.markdown('## İmage is segmenting...')
     model,session = loading_model()
     K.set_session(session)
-    #image = image.resize((512,512),Image.ANTIALIAS)
-    #image = upload_img(image)
-    t.markdown(f"{image.size}")
-    npy_img = np.array(image)
-    t.markdown(f"{npy_img.shape}")
+    image = upload_img(image)
+    t.markdown(f"{image.shape}")
     result_img = model.predict(image)
-#     result_img = result_img[:,:,:,0]>0.5
-#     result_img = result_img[0,:,:]
-#     result_img = Image.fromarray(result_img)
-    #t.markdown('## Segmentation result:')
+    result_img = result_img[:,:,:,0]>0.5
+    result_img = result_img[0,:,:]
+    result_img = Image.fromarray(result_img)
+    t.markdown('## Segmentation result:')
     st.image(result_img, caption='Predicted Image.', use_column_width=True)
