@@ -1,10 +1,12 @@
 import streamlit as st
+from zipfile import ZipFile
 from PIL import Image
 import numpy as np
 from tensorflow import keras
 from keras.models import load_model
 from keras import backend as K 
 import cv2
+import tempfile
 
 
 st.title('My first app')
@@ -31,8 +33,13 @@ def upload_img(image):
 
 uploaded_file = st.file_uploader("Choose an image...", type=['tif'])
 
+
 if uploaded_file is not None:
-    image = Image.open(uploaded_file)
+    
+    #image = Image.open(uploaded_file)
+    tfile = tempfile.NamedTemporaryFile(delete=False)
+    tfile.write(uploaded_file.read())
+    image = cv2.imread(tfile.name,-1)
     st.image(image, caption='Uploaded Image.', use_column_width=False)
 
     button = st.button('Predict')
