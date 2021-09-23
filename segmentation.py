@@ -40,7 +40,8 @@ if uploaded_file is not None:
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_file.read())
     image = cv2.imread(tfile.name,-1)
-    st.image(image, caption='Uploaded Image.', use_column_width=False)
+    t_img = Image.fromarray(image)
+    st.image(t_img, caption='Uploaded Image.', use_column_width=False)
 
     button = st.button("Let's Predict Image")
 
