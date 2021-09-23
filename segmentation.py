@@ -43,7 +43,7 @@ if uploaded_file is not None:
         model,session = loading_model()
         K.set_session(session)
         #image = np.array(image)
-        t.markdown(f'{(typeimage)}')
+        t.markdown(f'{type(image)}')
         #image = Image.fromarray(image)
     #     result_img = model.predict(image)
     #     result_img = result_img[:,:,:,:]>0.5
