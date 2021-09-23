@@ -21,7 +21,7 @@ def loading_model():
     return model,session
 
 
-@st.cache(allow_output_mutation=True)
+@st.cache
 def upload_img(img):
     img_npy = cv2.imread(img,-1)
     img_npy = np.asarray(img_npy)
@@ -34,7 +34,7 @@ uploaded_file = st.file_uploader("Choose an image...", type="tif")
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded Image.', use_column_width=True)
+    st.image(image, caption='Uploaded Image.', use_column_width=False)
 
 button = st.button('Predict')
 
