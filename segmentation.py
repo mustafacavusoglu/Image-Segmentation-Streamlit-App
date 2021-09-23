@@ -9,18 +9,17 @@ st.title('My first app')
 
 st.title("Segmentation  with Dense-UNet")
 
-@st.cache
 def load_model(model_path):
     model = load_model(model_path)
     return model
 
-@st.cache
 def predict(model,img):
     img_npy = cv2.imread(img)
     result_img = model.predict(img_npy)
     result_img = result_img[:,:,:,0]>0.5
     result_img = Image.fromarray(result_img)
     return result_img
+
 
 uploaded_file = st.file_uploader("Choose an image...", type="tif")
 
