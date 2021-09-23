@@ -30,7 +30,7 @@ def upload_img(img):
     return result_img
 
 
-uploaded_file = st.file_uploader("Choose an image...", type="tif,jpeg,jpg,png")
+uploaded_file = st.file_uploader("Choose an image...", type="png")
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
