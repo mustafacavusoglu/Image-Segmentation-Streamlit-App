@@ -40,12 +40,13 @@ if uploaded_file is not None:
         t.markdown('## İmage is segmenting...')
         model,session = loading_model()
         K.set_session(session)
-        image = np.asarray(image)
-        image = Image.fromarray(image)
+        image = np.array(image)
+        t.markdown(f'{image.shape}')
+        #image = Image.fromarray(image)
     #     result_img = model.predict(image)
     #     result_img = result_img[:,:,:,:]>0.5
         #result_img = result_img[0,:,:,1]*255
         #t.markdown(f"{result_img}")
         #result_img = Image.fromarray(result_img)
         t.markdown('## Segmentation result: ')
-        st.image(image, caption='Predicted Image.', use_column_width=False)
+        #st.image(image, caption='Predicted Image.', use_column_width=False)
