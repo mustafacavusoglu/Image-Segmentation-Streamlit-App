@@ -33,7 +33,6 @@ def upload_img(image):
 uploaded_file = st.file_uploader("Choose an image...", type=['tif'])
 
 if uploaded_file is not None:
-    image = upload_image(uploaded_file)
     st.image(Image.open(uploaded_file), caption='Uploaded Image.', use_column_width=False)
     st.markdown(f'{image.shape}')
 button = st.button('Predict')
