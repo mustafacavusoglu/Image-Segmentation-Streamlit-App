@@ -30,7 +30,7 @@ def upload_img(img):
     return result_img
 
 
-uploaded_file = st.file_uploader("Choose an image...", type="png")
+uploaded_file = st.file_uploader("Choose an image...", type="tif")
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
@@ -43,7 +43,7 @@ if button:
     t.markdown('## İmage is segmenting...')
     model,session = loading_model()
     K.set_session(session)
-    image = image.resize((512,512),Image.ANTIALIAS)
+    #image = image.resize((512,512),Image.ANTIALIAS)
     #image = upload_img(image)
     t.markdown(f"{image.size}")
 #     result_img = model.predict(image)
