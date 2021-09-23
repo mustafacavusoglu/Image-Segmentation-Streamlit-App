@@ -32,7 +32,9 @@ def upload_img(image):
 uploaded_file = st.file_uploader("Choose an image...", type=['tif'])
 
 if uploaded_file is not None:
-    st.image(Image.open(uploaded_file), caption='Uploaded Image.', use_column_width=False)
+    image = Image.open(uploaded_file)
+    st.image(image, caption='Uploaded Image.', use_column_width=False)
+
     button = st.button('Predict')
 
     if button:
@@ -40,8 +42,8 @@ if uploaded_file is not None:
         t.markdown('## İmage is segmenting...')
         model,session = loading_model()
         K.set_session(session)
-        image = np.array(image)
-        t.markdown(f'{image.shape}')
+        #image = np.array(image)
+        t.markdown(f'{(typeimage)}')
         #image = Image.fromarray(image)
     #     result_img = model.predict(image)
     #     result_img = result_img[:,:,:,:]>0.5
