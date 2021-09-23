@@ -43,10 +43,10 @@ if button:
     model,session = loading_model()
     K.set_session(session)
     image = upload_img(image)
-    t.markdown(f"{image.shape}")
     result_img = model.predict(image)
     result_img = result_img[:,:,:,0]>0.4
-    result_img = result_img[0,:,:]*255
+    result_img = result_img[0,:,:]
+    t.markdown(f"{result_img}")
     result_img = Image.fromarray(result_img)
     t.markdown('## Segmentation result: ')
     st.image(result_img, caption='Predicted Image.', use_column_width=True)
