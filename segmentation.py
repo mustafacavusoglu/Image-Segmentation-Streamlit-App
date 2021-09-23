@@ -36,7 +36,7 @@ uploaded_file = st.file_uploader("Choose an image...", type=['tif'])
 
 if uploaded_file is not None:
     
-    t_img = Image.open(uploaded_file)
+    #t_img = Image.open(uploaded_file)
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_file.read())
     image = cv2.imread(tfile.name,-1)
