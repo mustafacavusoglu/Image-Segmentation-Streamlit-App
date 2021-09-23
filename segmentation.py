@@ -22,14 +22,11 @@ def loading_model():
 
 
 @st.cache(allow_output_mutation=True)
-def predict(model,img):
+def upload_img(img):
     img_npy = cv2.imread(img,-1)
     img_npy = np.asarray(img_npy)
     img_npy = img_npy.reshape((1,512,512,3))
-    result_img = model.predict(img_npy)
-    result_img = result_img[:,:,:,0]>0.5
-    result_img = result_img[0,:,:]
-    result_img = Image.fromarray(result_img)
+    
     return result_img
 
 
@@ -46,6 +43,10 @@ if button:
     t.markdown('## İmage is segmenting...')
     model,session = loading_model()
     K.set_session(session)
-    result_img = predict(model,image)
+    image = upload_img(image)
+    result_img = model.predict(image)
+    result_img = result_img[:,:,:,0]>0.5
+    result_img = result_img[0,:,:]
+    result_img = Image.fromarray(result_img)
     t.markdown('## Segmentation result:')
     st.image(result_img, caption='Predicted Image.', use_column_width=True)
