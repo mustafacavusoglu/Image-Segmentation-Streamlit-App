@@ -46,6 +46,8 @@ if button:
     #image = image.resize((512,512),Image.ANTIALIAS)
     #image = upload_img(image)
     t.markdown(f"{image.size}")
+    npy_img = np.array(image)
+    t.markdown(f"{npy_img.shape}")
     result_img = model.predict(image)
 #     result_img = result_img[:,:,:,0]>0.5
 #     result_img = result_img[0,:,:]
