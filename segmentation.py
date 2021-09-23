@@ -45,8 +45,8 @@ if button:
     image = upload_img(image)
     result_img = model.predict(image)
     result_img = result_img[:,:,:,0]>0.4
-    result_img = result_img[0,:,:]
-    t.markdown(f"{result_img.shape}")
-    result_img = Image.fromarray(result_img)
+    result_img = result_img[0,:,:]*255
+    t.markdown(f"{result_img}")
+    #result_img = Image.fromarray(result_img)
     #t.markdown('## Segmentation result: ')
     st.image(result_img, caption='Predicted Image.', use_column_width=False)
