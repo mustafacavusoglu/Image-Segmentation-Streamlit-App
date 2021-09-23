@@ -42,7 +42,7 @@ if uploaded_file is not None:
     image = cv2.imread(tfile.name,-1)
     st.image(image, caption='Uploaded Image.', use_column_width=False)
 
-    button = st.button("Let's Predict")
+    button = st.button("Let's Predict Image")
 
     if button:
         t = st.empty()
