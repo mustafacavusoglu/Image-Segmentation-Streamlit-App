@@ -1,7 +1,9 @@
 import streamlit as st
 from PIL import Image
 import numpy as np
-from tensorflow.keras.models import load_model
+from tensorflow import keras
+from keras.models import load_model
+from keras import backend as K 
 import cv2
 
 
@@ -9,10 +11,15 @@ st.title('My first app')
 
 st.title("Segmentation  with Dense-UNet")
 
-def load_model(model_path):
-    model = load_model(model_path)
-    return model
 
+@st.cache(allow_output_mutation=True)
+def load_model():
+    model = load_model("satellitesegment.h5")
+    session = K.get_session()
+    return model,session
+
+
+@st.cache(allow_output_mutation=True)
 def predict(model,img):
     img_npy = cv2.imread(img)
     result_img = model.predict(img_npy)
@@ -32,8 +39,10 @@ button = st.button('Predict')
 if button:
     t = st.empty()
     t.markdown('## İmage is segmenting...')
-    model = load_model("satellitesegment.h5")
+    model, session = load_model()
+    model,session = load_model()
     image = image.reshape((1,512,512,3))
+    K.set_session(session)
     result_img = predict(model,image)
     t.markdown('## Segmentation result:')
     st.image(result_img, caption='Predicted Image.', use_column_width=True)
