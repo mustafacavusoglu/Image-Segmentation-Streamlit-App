@@ -50,5 +50,5 @@ if uploaded_file is not None:
         #result_img = result_img[0,:,:,1]*255
         #t.markdown(f"{result_img}")
         #result_img = Image.fromarray(result_img)
-        t.markdown('## Segmentation result: ')
+        #t.markdown('## Segmentation result: ')
         #st.image(image, caption='Predicted Image.', use_column_width=False)
