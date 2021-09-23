@@ -29,24 +29,24 @@ def upload_img(image):
     return img_npy
 
 
-uploaded_file = st.file_uploader("Choose an image...", type="npy")
+uploaded_file = st.file_uploader("Choose an image...", type=['tif'])
 
 if uploaded_file is not None:
     image = upload_image(uploaded_file)
-    #st.image(image, caption='Uploaded Image.', use_column_width=False)
+    st.image(image, caption='Uploaded Image.', use_column_width=False)
     st.markdown(f'{image.shape}')
 button = st.button('Predict')
 
-# if button:
-#     t = st.empty()
-#     t.markdown('## İmage is segmenting...')
-#     model,session = loading_model()
-#     K.set_session(session)
-#     image = upload_img(image)
-#     result_img = model.predict(image)
-#     result_img = result_img[:,:,:,:]>0.4
-#     result_img = result_img[0,:,:,1]*255
-#     #t.markdown(f"{result_img}")
-#     #result_img = Image.fromarray(result_img)
-#     t.markdown('## Segmentation result: ')
-#     st.image(result_img, caption='Predicted Image.', use_column_width=False)
+if button:
+    t = st.empty()
+    t.markdown('## İmage is segmenting...')
+    model,session = loading_model()
+    K.set_session(session)
+    #image = upload_img(image)
+    result_img = model.predict(image)
+    result_img = result_img[:,:,:,:]>0.5
+    #result_img = result_img[0,:,:,1]*255
+    #t.markdown(f"{result_img}")
+    #result_img = Image.fromarray(result_img)
+    t.markdown('## Segmentation result: ')
+    st.image(result_img, caption='Predicted Image.', use_column_width=False)
