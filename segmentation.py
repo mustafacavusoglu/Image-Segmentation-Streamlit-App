@@ -45,8 +45,7 @@ if uploaded_file is not None:
         image = np.array(image,dtype='uint16').reshape((1,512,512,3))
         result_img = model.predict(image)
         result_img = result_img[:,:,:,:]>0.5
-        #result_img = result_img[0,:,:,0]
-        #result_img = Image.fromarray(result_img)
-        t.markdown(f'{result_img.shape}')
-        #t.markdown('## Segmentation result: ')
-        #st.image(result_img, caption='Predicted Image.', use_column_width=False)
+        result_img = result_img[0,:,:,0]
+        result_img = Image.fromarray(result_img)
+        t.markdown('## Segmentation result: ')
+        st.image(result_img, caption='Predicted Image.', use_column_width=False)
