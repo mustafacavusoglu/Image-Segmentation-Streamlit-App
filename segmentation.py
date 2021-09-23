@@ -47,6 +47,7 @@ if uploaded_file is not None:
         result_img = result_img[:,:,:,:]>0.5
         result_img = result_img[0,:,:,1]*255
         t.markdown(f"{type(result_img)}")
-        #result_img = Image.fromarray(result_img)
+        result_img = Image.fromarray(result_img)
+        #result_img = result_img.load()
         #t.markdown('## Segmentation result: ')
-        #st.image(image, caption='Predicted Image.', use_column_width=False)
+        st.image(result_img, caption='Predicted Image.', use_column_width=False)
