@@ -9,9 +9,8 @@ import cv2
 import tempfile
 
 
-st.title('My first app')
 
-st.title("Segmentation  with Dense-UNet")
+st.title("Satellite Image Segmentation with Dense-UNet")
 
 
 @st.cache(allow_output_mutation=True)
