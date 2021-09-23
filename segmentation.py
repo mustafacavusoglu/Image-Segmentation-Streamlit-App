@@ -24,10 +24,11 @@ def loading_model():
 @st.cache(allow_output_mutation=True)
 def predict(model,img):
     img_npy = cv2.imread(img)
-    result_img = model.predict(img_npy)
+    st.title(f"{img.shape}")
+    """ result_img = model.predict(img_npy)
     result_img = result_img[:,:,:,0]>0.5
     result_img = result_img[0,:,:]
-    result_img = Image.fromarray(result_img)
+    result_img = Image.fromarray(result_img) """
     return result_img
 
 
