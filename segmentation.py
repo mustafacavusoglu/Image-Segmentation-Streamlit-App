@@ -46,9 +46,9 @@ if button:
     #image = image.resize((512,512),Image.ANTIALIAS)
     #image = upload_img(image)
     t.markdown(f"{image.size}")
-#     result_img = model.predict(image)
+    result_img = model.predict(image)
 #     result_img = result_img[:,:,:,0]>0.5
 #     result_img = result_img[0,:,:]
 #     result_img = Image.fromarray(result_img)
     #t.markdown('## Segmentation result:')
-    #st.image(image, caption='Predicted Image.', use_column_width=True)
+    st.image(result_img, caption='Predicted Image.', use_column_width=True)
