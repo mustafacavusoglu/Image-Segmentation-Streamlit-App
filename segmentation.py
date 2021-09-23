@@ -22,7 +22,7 @@ def predict(model,img):
     result_img = Image.fromarray(result_img)
     return result_img
 
-uploaded_file = st.file_uploader("Choose an image...", type="tiff")
+uploaded_file = st.file_uploader("Choose an image...", type="tif")
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
