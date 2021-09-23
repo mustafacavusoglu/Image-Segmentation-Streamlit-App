@@ -44,10 +44,12 @@ if button:
     model,session = loading_model()
     K.set_session(session)
     #image = upload_img(image)
-    image = cv2.imread(image)
+    file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint16)
+    opencv_image = cv2.imdecode(file_bytes, 1)
+    #image = cv2.imread(image)
 #     result_img = model.predict(image)
 #     result_img = result_img[:,:,:,0]>0.5
 #     result_img = result_img[0,:,:]
 #     result_img = Image.fromarray(result_img)
     t.markdown('## Segmentation result:')
-    #st.image(result_img, caption='Predicted Image.', use_column_width=True)
+    st.image(opencv_image, caption='Predicted Image.', use_column_width=True)
