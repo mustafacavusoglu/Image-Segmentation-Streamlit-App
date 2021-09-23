@@ -23,6 +23,7 @@ def loading_model():
 
 @st.cache
 def upload_img(image):
+    image = Image.open(image)
     img_npy = np.array(image)
     img_npy = img_npy.reshape((1,512,512,3))
     
