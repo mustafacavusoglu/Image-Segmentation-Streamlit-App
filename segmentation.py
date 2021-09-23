@@ -24,11 +24,12 @@ def loading_model():
 @st.cache(allow_output_mutation=True)
 def predict(model,img):
     img_npy = cv2.imread(img)
+    img_npy = img_npy.reshape((1,512,512,3))
     st.title(f"{img.shape}")
-    """ result_img = model.predict(img_npy)
+    result_img = model.predict(img_npy)
     result_img = result_img[:,:,:,0]>0.5
     result_img = result_img[0,:,:]
-    result_img = Image.fromarray(result_img) """
+    result_img = Image.fromarray(result_img)
     return result_img
 
 
@@ -43,7 +44,6 @@ button = st.button('Predict')
 if button:
     t = st.empty()
     t.markdown('## İmage is segmenting...')
-    image = image.reshape((1,512,512,3))
     model,session = loading_model()
     K.set_session(session)
     result_img = predict(model,image)
