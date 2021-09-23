@@ -45,7 +45,7 @@ if button:
     image = upload_img(image)
     t.markdown(f"{image.shape}")
     result_img = model.predict(image)
-    result_img = result_img[:,:,:,0]>0.5
+    result_img = result_img[:,:,:,0]>0.1
     result_img = result_img[0,:,:]
     result_img = Image.fromarray(result_img)
     t.markdown('## Segmentation result:')
