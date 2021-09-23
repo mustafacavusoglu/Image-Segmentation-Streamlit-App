@@ -43,7 +43,8 @@ if button:
     t.markdown('## İmage is segmenting...')
     model,session = loading_model()
     K.set_session(session)
-    image = upload_img(image)
+    #image = upload_img(image)
+    image = Image.open(image)
     result_img = model.predict(image)
     result_img = result_img[:,:,:,0]>0.5
     result_img = result_img[0,:,:]
